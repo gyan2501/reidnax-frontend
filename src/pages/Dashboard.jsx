@@ -77,7 +77,7 @@ const defaultTheme = createTheme();
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
-  const [activeView, setActiveView] = React.useState("analytics"); // Default view is "analytics"
+  const [activeView, setActiveView] = React.useState("analytics"); // Default "analytics"
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -159,10 +159,17 @@ export default function Dashboard() {
             </ListItemButton>
 
             <Divider sx={{ my: 1 }} />
-            <Link to={"/"} style={{ textDecoration: "none", color: "red" , marginTop:"15px" }}>
+            <Link
+              to={"/"}
+              style={{
+                textDecoration: "none",
+                color: "red",
+                marginTop: "15px",
+              }}
+            >
               <ListItemButton>
                 <ListItemIcon sx={{ color: "red" }}>
-                  <LogoutIcon  />
+                  <LogoutIcon />
                 </ListItemIcon>
                 <ListItemText primary="Logout" />
               </ListItemButton>
@@ -185,32 +192,38 @@ export default function Dashboard() {
 
           <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
             {activeView === "analytics" && ( // Render chart when "Analytics" is active
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 500,
-                  }}
-                >
-                  <Chart />
-                </Paper>
-              </Grid>
+              <div>
+                Chart
+                <Grid item xs={12} md={8} lg={9}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                      height: 500,
+                    }}
+                  >
+                    <Chart />
+                  </Paper>
+                </Grid>
+              </div>
             )}
 
             {activeView === "data" && ( // Render tabular data when "Data" is active
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <TableData />
-                </Paper>
-              </Grid>
+              <div>
+                Data Table
+                <Grid item xs={12} md={8} lg={9}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TableData />
+                  </Paper>
+                </Grid>
+              </div>
             )}
           </Container>
         </Box>
